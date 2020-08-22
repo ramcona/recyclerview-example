@@ -1,5 +1,6 @@
 package can.co.id.cobarecycleview
 
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,5 +16,13 @@ class HewanHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun setData(data:HewanModel){
         tvNama.text = data.nama
         imgHewan.setImageResource(data.image)
+
+        tvNama.rootView.setOnClickListener {
+            val go = Intent(itemView.context, DetailHewanActivity::class.java)
+            go.putExtra("image", data.image)
+            go.putExtra("nama", data.nama)
+
+            itemView.context.startActivity(go)
+        }
     }
 }
